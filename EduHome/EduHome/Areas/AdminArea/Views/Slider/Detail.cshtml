@@ -1,0 +1,46 @@
+﻿@model Slider
+
+@{
+    ViewData["Title"] = "Slider Detail";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <h4>Category</h4>
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="header d-flex justify-content-between my-5">
+                        <h1 class="card-title my-3">Slider</h1>
+                        <div><a class="btn btn-success btn-sm my-4" asp-action="Create">Create</a></div>
+
+
+
+
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                               
+                            </thead>
+                            <tbody style="width:300px">
+                                
+                                    <img style="width: 300px; height: 150px; border-radius: unset" src="~/assets/img/slider/@Model.Image" alt="Slider" /> </td>
+                                    <h5 class="mt-5"> @Model.SliderDetail.Header</h5>
+                                    <h6 class="mt-3">@Model.SliderDetail.Desc</h6>
+                                     
+                                
+
+                                
+                                    <a class="btn btn-primary btn-sm" asp-action="Index">Go Back</a>
+                                
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

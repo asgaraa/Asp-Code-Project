@@ -4,14 +4,16 @@ using EduHome.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EduHome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409113354_CreateCourseDetailTable")]
+    partial class CreateCourseDetailTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,17 +55,14 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AboutDesc")
+                    b.Property<string>("About")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ApplyDesc")
+                    b.Property<string>("Apply")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CertificationDesc")
+                    b.Property<string>("Certification")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CourseFutureId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Desc")
                         .HasColumnType("nvarchar(max)");
@@ -76,8 +75,6 @@ namespace EduHome.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseFutureId");
-
                     b.ToTable("Courses");
                 });
 
@@ -88,31 +85,33 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Assestmens")
+                    b.Property<string>("About")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClassDuration")
+                    b.Property<string>("Apply")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Datatime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Duration")
+                    b.Property<string>("Certification")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Language")
+                    b.Property<int?>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FeatureId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SkillsLevel")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Students")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
 
                     b.ToTable("CourseFutures");
                 });
@@ -173,13 +172,11 @@ namespace EduHome.Migrations
                     b.ToTable("SliderDetails");
                 });
 
-            modelBuilder.Entity("EduHome.Models.Course", b =>
+            modelBuilder.Entity("EduHome.Models.CourseFuture", b =>
                 {
-                    b.HasOne("EduHome.Models.CourseFuture", "CourseFuture")
+                    b.HasOne("EduHome.Models.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseFutureId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
                 });
 
             modelBuilder.Entity("EduHome.Models.Slider", b =>

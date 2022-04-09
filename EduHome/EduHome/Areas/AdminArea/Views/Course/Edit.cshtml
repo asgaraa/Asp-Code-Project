@@ -1,0 +1,87 @@
+﻿@model CourseVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container my-5">
+    <form class="forms-sample mt-5" method="post" asp-action="Edit" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Photo">Image</label>
+            <input class="form-control" style="width:300px" asp-for="Photo">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name">Name:</label>
+            <input class="form-control" style="width:300px" asp-for="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Desc">Desc:</label>
+            <input class="form-control" style="width:300px" asp-for="Desc">
+            <span class="text-danger" asp-validation-for="Desc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AboutDesc">AboutDesc:</label>
+            <input class="form-control" style="width:300px" asp-for="AboutDesc">
+            <span class="text-danger" asp-validation-for="AboutDesc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApplyDesc">ApplyDesc:</label>
+            <input class="form-control" style="width:300px" asp-for="ApplyDesc">
+            <span class="text-danger" asp-validation-for="ApplyDesc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CertificationDesc">CertificationDesc:</label>
+            <input class="form-control" style="width:300px" asp-for="CertificationDesc">
+            <span class="text-danger" asp-validation-for="CertificationDesc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DetailName">DetailName:</label>
+            <input class="form-control" style="width:300px" asp-for="DetailName">
+            <span class="text-danger" asp-validation-for="DetailName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Datatime">Datatime:</label>
+            <input class="form-control" style="width:300px" asp-for="Datatime">
+            <span class="text-danger" asp-validation-for="Datatime"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Duration">Duration:</label>
+            <input class="form-control" style="width:300px" asp-for="Duration">
+            <span class="text-danger" asp-validation-for="Duration"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ClassDuration">ClassDuration:</label>
+            <input class="form-control" style="width:300px" asp-for="ClassDuration">
+            <span class="text-danger" asp-validation-for="ClassDuration"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SkillsLevel">SkillsLevel:</label>
+            <input class="form-control" style="width:300px" asp-for="SkillsLevel">
+            <span class="text-danger" asp-validation-for="SkillsLevel"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Language">Language:</label>
+            <input class="form-control" style="width:300px" asp-for="Language">
+            <span class="text-danger" asp-validation-for="Language"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Students">Students:</label>
+            <input class="form-control" style="width:300px" asp-for="Students">
+            <span class="text-danger" asp-validation-for="Students"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Assestmens">Assestmens:</label>
+            <input class="form-control" style="width:300px" asp-for="Assestmens">
+            <span class="text-danger" asp-validation-for="Assestmens"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+
+

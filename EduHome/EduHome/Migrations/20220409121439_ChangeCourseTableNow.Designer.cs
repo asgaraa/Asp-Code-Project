@@ -4,14 +4,16 @@ using EduHome.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EduHome.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220409121439_ChangeCourseTableNow")]
+    partial class ChangeCourseTableNow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,10 +55,19 @@ namespace EduHome.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("AboutDesc")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Apply")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ApplyDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Certification")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CertificationDesc")

@@ -119,7 +119,7 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             if (service == null) return NotFound();
 
-            //category.IsDeleted = true;
+           
             _context.Services.Remove(service);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

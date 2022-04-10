@@ -14,7 +14,7 @@
         <div class="form-group">
             <label asp-for="Name">Name:</label>
             <input class="form-control" style="width:300px" asp-for="Name">
-            <span class="text-danger" asp-validation-for="Name"></span>
+            <span class="text-white" asp-validation-for="Name"></span>
         </div>
         <div class="form-group">
             <label asp-for="Desc">Desc:</label>
@@ -81,5 +81,10 @@
         <a asp-action="Index" class="btn btn-light">Cancel</a>
     </form>
 </div>
+
+
+@section Scripts{
+    <partial name="_ValidationPartial" />
+}
 
 

@@ -107,22 +107,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/forms/basic_elements.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-playlist-play"></i>
-                        </span>
-                        <span class="menu-title">Form Elements</span>
-                    </a>
-                </li>
-                <li class="nav-item menu-items">
-                    <a class="nav-link" href="pages/tables/basic-table.html">
-                        <span class="menu-icon">
-                            <i class="mdi mdi-table-large"></i>
-                        </span>
-                        <span class="menu-title">Tables</span>
-                    </a>
-                </li>
+
                 <li class="nav-item menu-items">
                     <a class="nav-link" asp-area="AdminArea" asp-controller="Product" asp-action="Index">
                         <span class="menu-icon">
@@ -169,6 +154,22 @@
                             <i class="mdi mdi-chart-bar"></i>
                         </span>
                         <span class="menu-title">Courses</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="AdminArea" asp-controller="Notice" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-chart-bar"></i>
+                        </span>
+                        <span class="menu-title">Notices</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="AdminArea" asp-controller="Event" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-chart-bar"></i>
+                        </span>
+                        <span class="menu-title">Events</span>
                     </a>
                 </li>
 
@@ -393,9 +394,11 @@
     <script src="~/AssetsAdmin/assets/js/settings.js"></script>
     <script src="~/AssetsAdmin/assets/js/todolist.js"></script>
     <!-- endinject -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
     <!-- Custom js for this page -->
+    @RenderSection("Scripts", false)
     <script src="~/AssetsAdmin/assets/js/dashboard.js"></script>
     <!-- End custom js for this page -->
 </body>

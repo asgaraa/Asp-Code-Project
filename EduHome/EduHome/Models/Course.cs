@@ -11,7 +11,10 @@ namespace EduHome.Models
     public class Course
     {
         public int Id { get; set; }
+       
         public string Image { get; set; }
+        [Required(ErrorMessage = "Bu hisseni bosh buraxmayin")]
+        [StringLength(20, ErrorMessage = "Uzunluq cox ola bilmez")]
         public string Name { get; set; }
         public string Desc { get; set; }
       

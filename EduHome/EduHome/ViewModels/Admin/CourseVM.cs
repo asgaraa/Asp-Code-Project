@@ -13,6 +13,8 @@ namespace EduHome.ViewModels.Admin
     {
         public int Id { get; set; }
         public string Image { get; set; }
+        
+        [Required,MinLength(20)]
         public string Name { get; set; }
         public string Desc { get; set; }
 

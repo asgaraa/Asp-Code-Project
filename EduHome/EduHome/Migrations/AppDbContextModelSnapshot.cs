@@ -117,6 +117,77 @@ namespace EduHome.Migrations
                     b.ToTable("CourseFutures");
                 });
 
+            modelBuilder.Entity("EduHome.Models.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EventDetailId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Header")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventDetailId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("EduHome.Models.EventDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetailImage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventDetails");
+                });
+
+            modelBuilder.Entity("EduHome.Models.Notice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DateTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notices");
+                });
+
             modelBuilder.Entity("EduHome.Models.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -178,6 +249,15 @@ namespace EduHome.Migrations
                     b.HasOne("EduHome.Models.CourseFuture", "CourseFuture")
                         .WithMany()
                         .HasForeignKey("CourseFutureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("EduHome.Models.Event", b =>
+                {
+                    b.HasOne("EduHome.Models.EventDetail", "EventsDetail")
+                        .WithMany()
+                        .HasForeignKey("EventDetailId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

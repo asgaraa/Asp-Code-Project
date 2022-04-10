@@ -27,19 +27,24 @@ namespace EduHome.Areas.AdminArea.Controllers
             _context = context;
             _env = env;
         }
+        #region Index
         public async Task<IActionResult> Index()
         {
             List<Service> posters = await _context.Services.ToListAsync();
             return View(posters);
         }
+        #endregion
 
+        #region Detail
         public IActionResult Detail(int Id)
         {
             var service = _context.Services.FirstOrDefault(m => m.Id == Id);
             return View(service);
 
         }
+        #endregion
 
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -67,7 +72,9 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+        #region Edit
         public async Task<IActionResult> Edit(int Id)
         {
             Service service = await _context.Services.Where(m => m.Id == Id).FirstOrDefaultAsync();
@@ -108,9 +115,9 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
-
-
+        #region Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int Id)
@@ -119,16 +126,25 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             if (service == null) return NotFound();
 
-           
+
             _context.Services.Remove(service);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        //        private async Task<Service> GetServiceById(int Id)
-        //        {
-        //            return await _context.Services.FindAsync(Id);
-        //        }
-        //    }
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

@@ -24,13 +24,17 @@ namespace EduHome.Areas.AdminArea.Controllers
             _context = context;
             _env = env;
         }
+
+        #region Index
         public IActionResult Index()
         {
-           About about =  _context.Abouts.FirstOrDefault();
+            About about = _context.Abouts.FirstOrDefault();
             return View(about);
-           
-        }
 
+        }
+        #endregion
+
+        #region Edit
         public async Task<IActionResult> Edit(int Id)
         {
             About about = await GetAboutById(Id);
@@ -83,10 +87,16 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        #endregion
+
+        #region Helper
         private async Task<About> GetAboutById(int Id)
         {
             return await _context.Abouts.FindAsync(Id);
         }
+        #endregion
+
+
 
     }
 }

@@ -28,21 +28,28 @@ namespace EduHome.Areas.AdminArea.Controllers
             _context = context;
             _env = env;
         }
+
+
+        #region Index
         public async Task<IActionResult> Index()
         {
             List<Slider> sliders = await _context.Sliders.AsNoTracking().ToListAsync();
             return View(sliders);
         }
+        #endregion
 
+        #region Detail
         public async Task<IActionResult> Detail(int id)
         {
-            Slider slider = await _context.Sliders.Where(m=> m.Id==id).Include(m=>m.SliderDetail).FirstOrDefaultAsync();
+            Slider slider = await _context.Sliders.Where(m => m.Id == id).Include(m => m.SliderDetail).FirstOrDefaultAsync();
 
             if (slider is null) return NotFound();
-           
+
             return View(slider);
         }
+        #endregion
 
+        #region Create
         public IActionResult Create()
         {
             return View();
@@ -54,7 +61,7 @@ namespace EduHome.Areas.AdminArea.Controllers
         {
             if (ModelState["Photos"].ValidationState == ModelValidationState.Invalid) return View();
 
-            
+
 
             foreach (var photo in sliderVM.Photos)
             {
@@ -91,7 +98,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                 Slider slider = new Slider
                 {
                     Image = fileName,
-                    SliderDetailId =1
+                    SliderDetailId = 1
                 };
 
                 await _context.Sliders.AddAsync(slider);
@@ -99,16 +106,12 @@ namespace EduHome.Areas.AdminArea.Controllers
             }
 
 
-
-
-
-
-
-
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+        #region Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int Id)
@@ -124,8 +127,9 @@ namespace EduHome.Areas.AdminArea.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
-
+        #region Edit
 
         public async Task<IActionResult> Edit(int Id)
         {
@@ -138,7 +142,7 @@ namespace EduHome.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int Id, Slider slider)
         {
-            var dbSlider = await _context.Sliders.Where(m=>m.Id==Id).Include(m=>m.SliderDetail).FirstOrDefaultAsync();
+            var dbSlider = await _context.Sliders.Where(m => m.Id == Id).Include(m => m.SliderDetail).FirstOrDefaultAsync();
             if (dbSlider == null) return NotFound();
 
             if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
@@ -175,11 +179,27 @@ namespace EduHome.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
+
+        #region Helper
         private async Task<Slider> GetSliderById(int Id)
         {
             return await _context.Sliders.FindAsync(Id);
         }
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 }

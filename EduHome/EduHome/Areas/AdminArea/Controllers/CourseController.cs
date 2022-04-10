@@ -235,9 +235,13 @@ namespace EduHome.Areas.AdminArea.Controllers
         }
         #endregion
 
+        #region Helper
         private async Task<Course> GetCourseById(int Id)
         {
             return await _context.Courses.Where(m => m.Id == Id).Include(m => m.CourseFuture).FirstOrDefaultAsync();
         }
+        #endregion
+
+
     }
 }

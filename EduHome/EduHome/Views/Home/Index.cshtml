@@ -4,29 +4,42 @@
 }
 
 <!-- Background Area Start -->
-@await Component.InvokeAsync("Slider");
+@await Component.InvokeAsync("Slider")
 <!-- Background Area End -->
 <!-- Service Start -->
-@await Component.InvokeAsync("Service");
+@await Component.InvokeAsync("Service")
 <!-- Service End -->
 <!-- About Start -->
-@await Component.InvokeAsync("About");
+@await Component.InvokeAsync("About")
 <!-- About End -->
 <!-- Courses Area Start -->
-@await Component.InvokeAsync("CourseCategory");
+
+<div class="courses-area two pt-150 pb-150 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title">
+                    <img src="~/Assets/img/icon/section1.png" alt="section-title">
+                    <h2>COURSES WE OFFER</h2>
+                </div>
+            </div>
+        </div>
+        @await Component.InvokeAsync("CourseCategory",3)
+
+    </div>
+</div>
+
 <!-- Courses Area End -->
 <!-- Notice Start -->
-@await Component.InvokeAsync("Notice");
+@await Component.InvokeAsync("Notice")
 <!-- Notice End -->
 <!-- Event Area Start -->
-@await Component.InvokeAsync("Event");
+@await Component.InvokeAsync("Event",4)
 <!-- Event Area End -->
 <!-- Testimonial Area Start -->
-@await Component.InvokeAsync("Testimontial");
+@await Component.InvokeAsync("Testimontial")
 <!-- Testimonial Area End -->
 <!-- Blog Area Start -->
-@await Component.InvokeAsync("Blog")
+@await Component.InvokeAsync("Blog",3)
 <!-- Blog Area End -->
-<!-- Subscribe Start -->
-@await Component.InvokeAsync("Subscripe")
-<!-- Subscribe End -->
+

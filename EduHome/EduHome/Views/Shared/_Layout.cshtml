@@ -32,7 +32,10 @@
     <![endif]-->
       @await Component.InvokeAsync("Header");
       @RenderBody()
+      <!-- Subscripe Area Start -->
+      @await Component.InvokeAsync("Subscripe")
 
+      <!-- Subscripe Area End -->
       @await Component.InvokeAsync("Footer");
 
       <script src="~/Assets/js/vendor/jquery-1.12.0.min.js"></script>

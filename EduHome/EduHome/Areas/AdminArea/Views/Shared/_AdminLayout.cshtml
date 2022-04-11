@@ -172,6 +172,14 @@
                         <span class="menu-title">Events</span>
                     </a>
                 </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="AdminArea" asp-controller="Blog" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-chart-bar"></i>
+                        </span>
+                        <span class="menu-title">Blogs</span>
+                    </a>
+                </li>
 
 
             </ul>
@@ -377,6 +385,7 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- plugins:js -->
     <script src="~/AssetsAdmin/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -395,8 +404,6 @@
     <script src="~/AssetsAdmin/assets/js/todolist.js"></script>
     <!-- endinject -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
     <!-- Custom js for this page -->
     @RenderSection("Scripts", false)
     <script src="~/AssetsAdmin/assets/js/dashboard.js"></script>

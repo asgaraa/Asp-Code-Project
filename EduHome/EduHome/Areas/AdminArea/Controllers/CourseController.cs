@@ -150,7 +150,7 @@ namespace EduHome.Areas.AdminArea.Controllers
         public async Task<IActionResult> Create(CourseVM courseVM)
         {
 
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
+            if (!ModelState.IsValid) return View();
 
 
             if (!courseVM.Photo.CheckFileType("image/"))

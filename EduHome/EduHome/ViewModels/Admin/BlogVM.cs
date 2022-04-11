@@ -6,25 +6,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EduHome.Models
+namespace EduHome.ViewModels.Admin
 {
-    public class Course
+    public class BlogVM
     {
         public int Id { get; set; }
-       
         public string Image { get; set; }
-      
+        public string Author { get; set; }
+        public string Date { get; set; }
         public string Name { get; set; }
         public string Desc { get; set; }
-      
-        public string AboutDesc { get; set; }
-      
-        public string ApplyDesc { get; set; }
-   
-        public string CertificationDesc { get; set; }
-        public int CourseFutureId { get; set; }
-        public CourseFuture CourseFuture { get; set; }
-  
-
+        [Required, NotMapped]
+        public IFormFile Photo { get; set; }
     }
 }

@@ -5,10 +5,20 @@ using System.Threading.Tasks;
 
 namespace EduHome.Models
 {
-    public class Skill
+    public class Skill:BaseEntity
     {
-        public int Id { get; set; }
-        public int Name { get; set; }
+       
+        public string Name { get; set; }
         public List<TeacherSkill> Teachers { get; set; }
+
+        internal dynamic skillList()
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static object ToList()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

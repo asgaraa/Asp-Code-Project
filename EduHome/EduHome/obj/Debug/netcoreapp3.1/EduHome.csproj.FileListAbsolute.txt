@@ -196,3 +196,8 @@ C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\B
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Blog\Detail.cshtml.g.cs
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\Index.cshtml.g.cs
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Teacher\Detail.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Skill\Index.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Skill\Create.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Skill\Edit.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Teacher\Index.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Teacher\Create.cshtml.g.cs

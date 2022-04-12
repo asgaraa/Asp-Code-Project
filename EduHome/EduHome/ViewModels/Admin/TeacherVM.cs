@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EduHome.Models
+namespace EduHome.ViewModels.Admin
 {
-    public class Teacher:BaseEntity
+    public class TeacherVM
     {
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
         public string Name { get; set; }
         public string Position { get; set; }
         public string About { get; set; }
@@ -17,7 +20,11 @@ namespace EduHome.Models
         public string Mail { get; set; }
         public int Number { get; set; }
         public string Skype { get; set; }
-        public List<TeacherSkill> Skills { get; set; }
+        public List<SelectListItem> SelectSkills { get; set; }
 
+         public List<SelectListItem> drpSubjects { get; set; }  
+  
+        [Display(Name="Subjects")]  
+        public long[] SubjectsIds { get; set; } 
     }
 }

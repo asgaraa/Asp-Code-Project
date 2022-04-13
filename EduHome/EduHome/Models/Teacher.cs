@@ -19,5 +19,6 @@ namespace EduHome.Models
         public string Skype { get; set; }
         public List<TeacherSkill> Skills { get; set; }
 
+      
     }
 }

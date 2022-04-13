@@ -1,86 +1,82 @@
 ﻿@model TeacherVM
-@{
-    ViewData["Title"] = "Create";
-    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
-}
 
-<div class="container my-5">
-    <form class="forms-sample mt-5" method="post" asp-action="Create" enctype="multipart/form-data">
-        <div class="form-group">
-            <label asp-for="Image">Image</label>
-            <input class="form-control" style="width:300px" asp-for="Image">
-            <span class="text-danger" asp-validation-for="Image"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Name">Name:</label>
-            <input class="form-control" style="width:300px" asp-for="Name">
-            <span class="text-danger" asp-validation-for="Name"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Position">Position:</label>
-            <input class="form-control" style="width:300px" asp-for="Position">
-            <span class="text-danger" asp-validation-for="Position"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="About">About:</label>
-            <input class="form-control" style="width:300px" asp-for="About">
-            <span class="text-danger" asp-validation-for="About"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Degree">Degree:</label>
-            <input class="form-control" style="width:300px" asp-for="Degree">
-            <span class="text-danger" asp-validation-for="Degree"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Experience">Experience:</label>
-            <input class="form-control" style="width:300px" asp-for="Experience">
-            <span class="text-danger" asp-validation-for="Experience"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Faculty">Faculty:</label>
-            <input class="form-control" style="width:300px" asp-for="Faculty">
-            <span class="text-danger" asp-validation-for="Faculty"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Mail">Datatime:</label>
-            <input class="form-control" style="width:300px" asp-for="Mail">
-            <span class="text-danger" asp-validation-for="Mail"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Number">Number:</label>
-            <input class="form-control" style="width:300px" asp-for="Number">
-            <span class="text-danger" asp-validation-for="Number"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Skype">Skype:</label>
-            <input class="form-control" style="width:300px" asp-for="Skype">
-            <span class="text-danger" asp-validation-for="Skype"></span>
-        </div>
-        <div class="form-group row">
-            @Html.LabelFor(model => model.SubjectsIds, new { @class = "col-sm-2 col-form-label" })
-            <div class="col-sm-6">
-                @Html.ListBoxFor(model => model.SubjectsIds, new MultiSelectList(Model.drpSubjects, "Value", "Text"), new { @class = "form-control", multiple = "multiple", id = "Subjects_dropdown" })
+
+<div class="container mt-5">
+
+
+    <form method="post" asp-controller="Teacher" asp-action="Create" enctype="multipart/form-data" class="mb-5">
+
+        <table>
+            <div class="form-group">
+                <label asp-for="Image">Image</label>
+                <input class="form-control" style="width:300px" asp-for="Image">
+                <span class="text-danger" asp-validation-for="Image"></span>
             </div>
-        </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Name">Name:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Name">
+                <span class="text-danger" asp-validation-for="Teacher.Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Position">Position:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Position">
+                <span class="text-danger" asp-validation-for="Teacher.Position"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.About">About:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.About">
+                <span class="text-danger" asp-validation-for="Teacher.About"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Degree">Degree:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Degree">
+                <span class="text-danger" asp-validation-for="Teacher.Degree"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Experience">Experience:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Experience">
+                <span class="text-danger" asp-validation-for="Teacher.Experience"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Faculty">Faculty:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Faculty">
+                <span class="text-danger" asp-validation-for="Teacher.Faculty"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Mail">Datatime:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Mail">
+                <span class="text-danger" asp-validation-for="Teacher.Mail"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Number">Number:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Number">
+                <span class="text-danger" asp-validation-for="Teacher.Number"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Teacher.Skype">Skype:</label>
+                <input class="form-control" style="width:300px" asp-for="Teacher.Skype">
+                <span class="text-danger" asp-validation-for="Teacher.Skype"></span>
+            </div>
 
-
-        <button type="submit" class="btn btn-primary me-2">Submit</button>
-        <a asp-action="Index" class="btn btn-light">Cancel</a>
+        </table>
+        @if (Model.Skills != null)
+        {
+@for (int i = 0; i < Model.Skills.Count(); i++)
+{
+<tr>
+    <td>
+        <label>@Model.Skills[i].Name</label>
+        <input type="hidden" asp-for="@Model.Skills[i].Name" />
+        <input type="hidden" asp-for="@Model.Skills[i]" />
+        <input type="checkbox" asp-for="@Model.Skills[i].IsSelected" />
+        <input type="hidden" asp-for="@Model.Skills[i].Id" />
+        <input type="text" asp-for="Percents" placeholder="Percent" />
+    </td>
+</tr>}}
+        <br />
+        <input type="submit" value="Submit" />
     </form>
 </div>
-
-
 @section Scripts{
     <partial name="_ValidationPartial" />
 }
-
-@section Scripts{
-    <script>
-
-        $(document).ready(function () {
-            $('#Subjects_dropdown').multiselect();
-        });
-    </script>
-}
-
-

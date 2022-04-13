@@ -18,7 +18,7 @@ namespace EduHome.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            //List<Blog> blogs =
+           
             return View();
         }
 

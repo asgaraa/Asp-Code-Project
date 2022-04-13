@@ -6,6 +6,7 @@ using EduHome.ViewModels.Admin;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace EduHome.Areas.AdminArea.Controllers
     [Area("AdminArea")]
     public class TeacherController : Controller
     {
-       
+
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
         public TeacherController(AppDbContext context, IWebHostEnvironment env)
@@ -30,36 +31,32 @@ namespace EduHome.Areas.AdminArea.Controllers
         #region Index
         public async Task<IActionResult> Index()
         {
-            List<Teacher> teachers = await _context.Teachers.ToListAsync();
+            List<Teacher> teachers = await _context.Teachers.Where(m => m.IsActive == true).ToListAsync();
             return View(teachers);
         }
         #endregion
 
         #region Create
-        public IActionResult Create()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(TeacherVM teacherVM)
         {
+            List<Skill> skills = _context.Skills.ToList();
+            teacherVM.Skills = skills;
+            return View(teacherVM);
+        }
 
-            if (ModelState.IsValid) return View(teacherVM);
-
-           
-
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateTeacher(TeacherVM teacherVM)
+        {
 
 
             if (!teacherVM.Image.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Image", "Image type is wrong");
-                return View();
+                return NotFound();
             }
 
-            if (!teacherVM.Image.CheckFileSize(10000))
+            if (!teacherVM.Image.CheckFileSize(100000))
             {
                 ModelState.AddModelError("Image", "Image size is wrong");
                 return View();
@@ -73,34 +70,91 @@ namespace EduHome.Areas.AdminArea.Controllers
             }
 
 
-           
-
-
-
             Teacher teacher = new Teacher
             {
                 Image = fileName,
-                Name = teacherVM.Name,
-                Position = teacherVM.Position,
-                About = teacherVM.About,
-                Degree = teacherVM.Degree,
-                Experience = teacherVM.Experience,
-                Faculty = teacherVM.Faculty,
-                Mail = teacherVM.Mail,
-                Number = teacherVM.Number,
-                Skype = teacherVM.Skype,
-
-                
+                Name = teacherVM.Teacher.Name,
+                Position = teacherVM.Teacher.Position,
+                About = teacherVM.Teacher.About,
+                Degree = teacherVM.Teacher.Degree,
+                Experience = teacherVM.Teacher.Experience,
+                Faculty = teacherVM.Teacher.Faculty,
+                Mail = teacherVM.Teacher.Mail,
+                Number = teacherVM.Teacher.Number,
+                Skype = teacherVM.Teacher.Skype,
             };
             await _context.Teachers.AddAsync(teacher);
             await _context.SaveChangesAsync();
-           
-          
+
+            Teacher lastTeacher = await _context.Teachers.OrderByDescending(m => m.Id).FirstOrDefaultAsync();
+
+            int num = teacherVM.Skills.Where(m => m.IsSelected is true).Count();
+            int count = 0;
+            foreach (var skill in teacherVM.Skills.Where(m => m.IsSelected is true))
+            {
+
+                TeacherSkill teacherSkill = new TeacherSkill
+                {
+                    TeacherId = lastTeacher.Id,
+                    SkillId = skill.Id,
+                    Percent = teacherVM.Percents[0]
+                };
+                await _context.TeacherSkills.AddAsync(teacherSkill);
+                count++;
+            }
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
         }
 
-       
+
         #endregion
+
+        #region Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == id).Include(m => m.Skills).FirstOrDefaultAsync();
+
+            if (teacher == null) return NotFound();
+
+            string path = Helper.GetFilePath(_env.WebRootPath, "assets/img/teacher", teacher.Image);
+
+            Helper.DeleteFile(path);
+
+
+
+            teacher.IsActive = false;
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        #endregion
+
+        #region Detail
+        public async Task<IActionResult> Detail(int id)
+        {
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == id).FirstOrDefaultAsync();
+            List<TeacherSkill> teacherSkills = await _context.TeacherSkills.Where(m => m.TeacherId == id).ToListAsync();
+            List<Skill> skillsData = new List<Skill>();
+            List<int> skillsPercent = new List<int>();
+            foreach (var skill in teacherSkills)
+            {
+                Skill skills = await _context.Skills.Where(m => m.Id == skill.SkillId).FirstOrDefaultAsync();
+                skillsData.Add(skills);
+                skillsPercent.Add(skill.Percent);
+            }
+            TeacherDetailVM teacherDetail = new TeacherDetailVM
+            {
+                teacher = teacher,
+                skills = skillsData,
+                percents = skillsPercent
+            };
+            return View(teacherDetail);
+        }
+        #endregion
+
+
 
     }
 }

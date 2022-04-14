@@ -1,5 +1,8 @@
 ﻿using EduHome.Data;
+using EduHome.Models;
+using EduHome.ViewModels.Admin;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +25,23 @@ namespace EduHome.Controllers
 
         public async Task<IActionResult> Detail(int Id)
         {
-            //Blog blog = await _context.Blogs.Where(m => m.Id == Id).FirstOrDefaultAsync();
-            return View();
+            Teacher teacher = await _context.Teachers.Where(m => m.Id == Id).FirstOrDefaultAsync();
+            List<TeacherSkill> teacherSkills = await _context.TeacherSkills.Where(m => m.TeacherId == Id).ToListAsync();
+            List<Skill> skillsData = new List<Skill>();
+            List<int> skillsPercent = new List<int>();
+            foreach (var skill in teacherSkills)
+            {
+                Skill skills = await _context.Skills.Where(m => m.Id == skill.SkillId).FirstOrDefaultAsync();
+                skillsData.Add(skills);
+                skillsPercent.Add(skill.Percent);
+            }
+            TeacherDetailVM teacherDetail = new TeacherDetailVM
+            {
+                teacher = teacher,
+                skills = skillsData,
+                percents = skillsPercent
+            };
+            return View(teacherDetail);
         }
     }
 }

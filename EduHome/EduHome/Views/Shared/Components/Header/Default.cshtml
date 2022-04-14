@@ -46,12 +46,12 @@
                                          
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a asp-controller="About" asp-action="Index">About</a></li>
                                     <li>
                                         <a asp-controller="Course" asp-action="Index">courses</a>
                                         <ul>
                                             <li><a asp-controller="Course" asp-action="Index">courses</a></li>
-                                            <li><a asp-controller="Course" asp-action="Detail" asp-route-Id="Id">courses details</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li>
@@ -62,10 +62,10 @@
                                         </ul>
                                     </li>
                                     <li class="hidden-sm">
-                                        <a href="teacher.html">teacher</a>
+                                        <a asp-controller="Teacher" asp-action="Index">teacher</a>
                                         <ul>
-                                            <li><a href="teacher.html">teacher</a></li>
-                                            <li><a href="teacher-details.html">teacher details</a></li>
+                                            <li><a asp-controller="Teacher" asp-action="Index">teacher</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li>

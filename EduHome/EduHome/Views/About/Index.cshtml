@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner Area Start -->
+<div class="banner-area-wrapper">
+    <div class="banner-area text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="banner-content-wrapper">
+                        <div class="banner-content">
+                            <h2>about us</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner Area End -->
+<!-- About Area Start -->
+@await Component.InvokeAsync("About")
+<!-- About Area End -->
+<!-- Teacher Area Start -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="section-title text-center">
+                <img src="~/Assets/img/icon/section.png" alt="title">
+                <h2>meet our teachers</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("Teacher", 4)
+<!-- Teacher Area End -->
+<!-- Testimonial Area Start -->
+@await Component.InvokeAsync("Testimontial")
+<!-- Testimonial Area End -->

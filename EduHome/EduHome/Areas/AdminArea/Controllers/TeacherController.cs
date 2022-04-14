@@ -97,7 +97,7 @@ namespace EduHome.Areas.AdminArea.Controllers
                 {
                     TeacherId = lastTeacher.Id,
                     SkillId = skill.Id,
-                    Percent = teacherVM.Percents[0]
+                    Percent = teacherVM.Percents[count]
                 };
                 await _context.TeacherSkills.AddAsync(teacherSkill);
                 count++;

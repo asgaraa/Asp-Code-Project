@@ -211,3 +211,10 @@ C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\Microsoft.Asp
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Accaunt\Register.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Accaunt\Login.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\SendGrid.dll
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Accaunt\EmailVerification.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Accaunt\ForgotPassword.cshtml.g.cs
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Views\Accaunt\ForgotPasswordConfirm.cshtml.g.cs

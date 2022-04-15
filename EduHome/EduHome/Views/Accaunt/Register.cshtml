@@ -27,7 +27,7 @@
 
                         <h4>Hello! let's get started</h4>
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <form class="pt-3" method="post" asp-action="Register">
+                        <form  class="pt-3" method="post" asp-action="Register">
                             <div class="form-group">
                                 <input asp-for="FullName" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="FullName">
                                 <span asp-validation-for="FullName" class="text-danger"></span>
@@ -69,7 +69,7 @@
                                 </button>
                             </div>
                             <div class="text-center mt-4 fw-light">
-                                Don't have an account? <a href="register.html" class="text-primary">Create</a>
+                                Don't have an Accaunt? <a href="register.html" class="text-primary">Create</a>
                             </div>
                         </form>
                     </div>
@@ -85,3 +85,5 @@
 @section Scripts{
     <partial name="_ValidationPartial" />
 }
+
+

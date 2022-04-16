@@ -24,7 +24,8 @@ namespace EduHome.Models
         public string CertificationDesc { get; set; }
         public int CourseFutureId { get; set; }
         public CourseFuture CourseFuture { get; set; }
-  
+        public string UserId { get; set; }
+
 
     }
 }

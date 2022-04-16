@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace EduHome.Areas.AdminArea.Controllers
@@ -29,8 +30,20 @@ namespace EduHome.Areas.AdminArea.Controllers
         #region Index
         public async Task<IActionResult> Index()
         {
-            List<Course> courses = await _context.Courses.ToListAsync();
-            return View(courses);
+            var AdminId = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+            List<Course> courseDetails = new List<Course> { };
+            var admin = _context.Users.Where(m => m.Id == "ae5e7c95 - 14e6 - 4578 - 92f6 - 154190fe9216");
+            if (AdminId == "ae5e7c95-14e6-4578-92f6-154190fe9216")
+            {
+                courseDetails = await _context.Courses.ToListAsync();
+
+            }
+            else
+            {
+                courseDetails = await _context.Courses.Where(m => m.UserId == this.User.FindFirstValue(ClaimTypes.NameIdentifier)).ToListAsync();
+            }
+
+            return View(courseDetails);
         }
         #endregion
 
@@ -198,7 +211,8 @@ namespace EduHome.Areas.AdminArea.Controllers
                 AboutDesc = courseVM.AboutDesc,
                 ApplyDesc = courseVM.ApplyDesc,
                 CertificationDesc = courseVM.CertificationDesc,
-                CourseFutureId = courseFutures.LastOrDefault().Id
+                CourseFutureId = courseFutures.LastOrDefault().Id,
+                UserId= this.User.FindFirstValue(ClaimTypes.NameIdentifier)
 
             };
             await _context.Courses.AddAsync(course);

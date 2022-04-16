@@ -42,8 +42,8 @@
                                     <tr>
                                         <td> @count </td>
                                         <td>   <img style="width:100px; height:50px; border-radius:unset" src="~/assets/img/blog/@blog.Image" alt="Poster" /></td>
-                                        <td> @blog.Name.Substring(0, 9) </td>
-                                        <td>@blog.Author.Substring(0,9)  </td>
+                                        <td> @blog.Name </td>
+                                        <td>@blog.Author  </td>
                                         <td> @blog.Date </td>
                                         <td>
                                             <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-Id="@blog.Id"><i class="mdi mdi-account-card-details"></i></a>

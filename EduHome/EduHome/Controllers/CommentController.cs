@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 
 namespace EduHome.Controllers
 {
-    public class ContactController : Controller
+    public class CommentController : Controller
     {
         private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IWebHostEnvironment _env;
 
-        public ContactController(AppDbContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
+        public CommentController(AppDbContext context,UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -30,11 +30,11 @@ namespace EduHome.Controllers
         #region Index
         public async Task<IActionResult> Index()
         {
-            List<Comment> comment = await _context.Comments.ToListAsync();
+           List<Comment> comment = await _context.Comments.ToListAsync();
             CommentVM comments = new CommentVM
             {
-
-                Comments = comment
+                
+                Comments=comment
 
             };
             return View(comments);
@@ -49,21 +49,27 @@ namespace EduHome.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CommentVM commentVM)
+        public async Task<IActionResult> Create(Comment comment)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-          
+            bool isExist = _context.Comments.Any(m => m.TextMessage.ToLower().Trim() == comment.TextMessage.ToLower().Trim());
+
+            if (isExist)
+            {
+                ModelState.AddModelError("Name", "Bu Comment artiq movcuddur");
+                return View();
+            }
 
             Comment comments = new Comment
             {
-                Name = commentVM.Name,
-                Email = commentVM.Email,
-                Subject = commentVM.Subject,
-                TextMessage = commentVM.TextMessage
+                 Name = comment.Name,
+                 Email= comment.Email,
+                 Subject=comment.Subject,
+                 TextMessage= comment.TextMessage
             };
 
             await _context.Comments.AddAsync(comments);
@@ -82,7 +88,7 @@ namespace EduHome.Controllers
 
             if (comment == null) return NotFound();
 
-
+            
             _context.Comments.Remove(comment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

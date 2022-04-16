@@ -1,5 +1,7 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
+using EduHome.Utilities.Paginations;
+using EduHome.ViewModels.Admin;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EduHome.ViewComponents
 {
-    public class BlogViewComponent:ViewComponent
+    public class BlogViewComponent : ViewComponent
     {
         private readonly AppDbContext _context;
         public BlogViewComponent(AppDbContext context)

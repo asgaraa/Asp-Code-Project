@@ -11,5 +11,6 @@ namespace EduHome.ViewModels.Admin
         public Teacher teacher { get; set; }
         public List<Skill> skills { get; set; }
         public List<int> percents { get; set; }
+        
     }
 }

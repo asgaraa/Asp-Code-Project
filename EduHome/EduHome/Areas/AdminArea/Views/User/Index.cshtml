@@ -17,7 +17,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Mail</th>
-                <th scope="col">UserId</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,7 @@
                     <th scope="row">@count</th>
                     <td>@activeUser.FullName</td>
                     <td>@activeUser.Email</td>
-                    <td>@activeUser.Id.Substring(0, 9)</td>
+                   
                     <td><a asp-action="ChangeStatus" asp-route-id="@activeUser.Id"><i class="far fa-check-circle" style="font-size:20px;color:green"></i></a></td>
                 </tr>
                 count++;
@@ -42,7 +42,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Mail</th>
-                <th scope="col">UserId</th>
+               
             </tr>
         </thead>
         <tbody>
@@ -52,7 +52,7 @@
                     <th scope="row">@count</th>
                     <td>@deactiveUser.FullName</td>
                     <td>@deactiveUser.Email</td>
-                    <td>@deactiveUser.Id.Substring(0, 9)</td>
+                   
                     <td><a asp-action="ChangeStatus" asp-route-id="@deactiveUser.Id"><i class="far fa-times-circle" style="font-size:20px;color:red"></i></a></td>
                 </tr>
                 count++;

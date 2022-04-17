@@ -25,6 +25,8 @@ namespace EduHome.Models
         public int CourseFutureId { get; set; }
         public CourseFuture CourseFuture { get; set; }
         public string UserId { get; set; }
+        
+       
 
 
     }

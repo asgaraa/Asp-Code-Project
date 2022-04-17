@@ -32,8 +32,8 @@ namespace EduHome.Areas.AdminArea.Controllers
         {
             var AdminId = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
             List<Course> courseDetails = new List<Course> { };
-            var admin = _context.Users.Where(m => m.Id == "ae5e7c95 - 14e6 - 4578 - 92f6 - 154190fe9216");
-            if (AdminId == "ae5e7c95-14e6-4578-92f6-154190fe9216")
+           
+            if (AdminId == "376fc97b-d927-4605-8685-1ef2c94fc33a")
             {
                 courseDetails = await _context.Courses.ToListAsync();
 

@@ -442,3 +442,4 @@ C:\Users\hp\Desktop\layihe\EduHome\Asp-Code-Project\EduHome\EduHome\obj\Debug\ne
 C:\Users\hp\Desktop\layihe\EduHome\Asp-Code-Project\EduHome\EduHome\obj\Debug\netcoreapp3.1\EduHome.pdb
 C:\Users\hp\Desktop\layihe\EduHome\Asp-Code-Project\EduHome\EduHome\obj\Debug\netcoreapp3.1\EduHome.genruntimeconfig.cache
 C:\Users\hp\Desktop\layihe\EduHome\Asp-Code-Project\EduHome\EduHome\obj\Debug\netcoreapp3.1\EduHome.csproj.AssemblyReference.cache
+C:\Users\hp\Desktop\layihe\EduHome\EduHome\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\User\Index.cshtml.g.cs

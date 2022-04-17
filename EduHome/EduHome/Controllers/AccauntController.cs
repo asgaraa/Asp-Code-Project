@@ -88,6 +88,8 @@ namespace EduHome.Controllers
                 emailbody = streamReader.ReadToEnd();
             }
 
+            await _userManager.AddToRoleAsync(newUser, UserRoles.Moderator.ToString());
+
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
             var url = Url.Action(nameof(VerifyEmail), "Accaunt", new { userId = newUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
 
@@ -207,7 +209,7 @@ namespace EduHome.Controllers
 
             var message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("EduHome", "quliyevr879@gmail.com"));
+            message.From.Add(new MailboxAddress("EduHome", "test.code.asgerov@gmail.com"));
 
             message.To.Add(new MailboxAddress(user.FullName, user.Email));
             message.Subject = "Reset Password";
@@ -229,7 +231,7 @@ namespace EduHome.Controllers
             using var smtp = new SmtpClient();
 
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("quliyevr879@gmail.com", "1920Yevlax");
+            smtp.Authenticate("test.code.asgerov@gmail.com", "testcode007");
             smtp.Send(message);
             smtp.Disconnect(true);
             return View();

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var userName = User.FindFirstValue(ClaimTypes.Name);
+    var Role = User.FindFirstValue(ClaimTypes.Role);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -10,12 +15,12 @@
     <link rel="stylesheet" href="~/AssetsAdmin/assets/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="~/AssetsAdmin/assets/vendors/jvectormap/jquery-jvectormap.css">
+   
     <link rel="stylesheet" href="~/AssetsAdmin/assets/vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="~/AssetsAdmin/assets/vendors/owl-carousel-2/owl.carousel.min.css">
     <link rel="stylesheet" href="~/AssetsAdmin/assets/vendors/owl-carousel-2/owl.theme.default.min.css">
-  
-    
+
+
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
@@ -42,8 +47,8 @@
                                 <span class="count bg-success"></span>
                             </div>
                             <div class="profile-name">
-                                <h5 class="mb-0 font-weight-normal">Asger Asgerov</h5>
-                                <span>Adminstrator</span>
+                                <h5 class="mb-0 font-weight-normal">@userName</h5>
+                                <span>@Role</span>
                             </div>
                         </div>
                         <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
@@ -94,7 +99,7 @@
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
-              
+
 
 
                 <li class="nav-item menu-items">
@@ -169,11 +174,20 @@
                         <span class="menu-title">Teachers</span>
                     </a>
                 </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-area="AdminArea" asp-controller="User" asp-action="Index">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-chart-bar"></i>
+                        </span>
+                        <span class="menu-title">Users</span>
+                    </a>
+                </li>
 
 
             </ul>
         </nav>
         <!-- partial -->
+
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar p-0 fixed-top d-flex flex-row">
@@ -330,7 +344,7 @@
                             <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
                                 <div class="navbar-profile">
                                     <img class="img-xs rounded-circle" src="~/AssetsAdmin/assets/images/faces/IMG-3865.jpg" alt="">
-                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Asger Asgerov</p>
+                                    <p class="mb-0 d-none d-sm-block navbar-profile-name">@userName</p>
                                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                                 </div>
                             </a>
@@ -371,31 +385,33 @@
             <!-- partial -->
             @RenderBody()
         </div>
-        <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
-    <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- plugins:js -->
-    <script src="~/AssetsAdmin/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="~/AssetsAdmin/assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="~/AssetsAdmin/assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="~/AssetsAdmin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="~/AssetsAdmin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="~/AssetsAdmin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="~/AssetsAdmin/assets/js/off-canvas.js"></script>
-    <script src="~/AssetsAdmin/assets/js/hoverable-collapse.js"></script>
-    <script src="~/AssetsAdmin/assets/js/misc.js"></script>
-    <script src="~/AssetsAdmin/assets/js/settings.js"></script>
-    <script src="~/AssetsAdmin/assets/js/todolist.js"></script>
-    <!-- endinject -->
-
-    <!-- Custom js for this page -->
-    @RenderSection("Scripts", false)
-    <script src="~/AssetsAdmin/assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+            <!-- page-body-wrapper ends 
+        </div>
+        <!-- container-scroller -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- plugins:js -->
+        <script src="~/AssetsAdmin/vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="~/AssetsAdmin/assets/vendors/chart.js/Chart.min.js"></script>
+        <script src="~/AssetsAdmin/assets/vendors/progressbar.js/progressbar.min.js"></script>
+        <script src="~/AssetsAdmin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
+        <script src="~/AssetsAdmin/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="~/AssetsAdmin/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="~/AssetsAdmin/assets/js/off-canvas.js"></script>
+      
+        <script src="~/AssetsAdmin/assets/js/hoverable-collapse.js"></script>
+        <script src="~/AssetsAdmin/assets/js/misc.js"></script>
+        <script src="~/AssetsAdmin/assets/js/settings.js"></script>
+        <script src="~/AssetsAdmin/assets/js/todolist.js"></script>
+        <script src="https://kit.fontawesome.com/5e5d9e530b.js" crossorigin="anonymous"></script>
+      
+        <!-- endinject -->
+        <!-- Custom js for this page -->
+        @RenderSection("Scripts", false)
+        <script src="~/AssetsAdmin/assets/js/dashboard.js"></script>
+        <!-- End custom js for this page -->
 </body>
 </html>

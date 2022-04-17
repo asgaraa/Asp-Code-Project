@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using static EduHome.Utilities.Helpers.Helper;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
@@ -180,6 +181,16 @@ namespace EduHome.Controllers
                 }
                 ModelState.AddModelError("", "Email or Password is Wrong");
                 return View(loginVM);
+            }
+
+            if (User.FindFirstValue(ClaimTypes.Role)== "User")
+            {
+                return RedirectToAction("Index", "Home");
+
+            }
+            else
+            {
+                return RedirectToAction("Dashboard", "AdminArea");
             }
 
             return RedirectToAction("Index", "Home");

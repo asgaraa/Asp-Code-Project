@@ -1,6 +1,7 @@
 ﻿using EduHome.Data;
 using EduHome.Models;
 using EduHome.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,7 @@ namespace EduHome.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Create(Comment comment)
         {
             if (!ModelState.IsValid)
@@ -82,6 +84,7 @@ namespace EduHome.Controllers
         #region Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Moderator")]
         public async Task<IActionResult> Delete(int Id)
         {
             Comment comment = await _context.Comments.Where(m => m.Id == Id).FirstOrDefaultAsync();

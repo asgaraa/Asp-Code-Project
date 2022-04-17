@@ -3,7 +3,9 @@ using EduHome.Models;
 using EduHome.Utilities.File;
 using EduHome.Utilities.Helpers;
 using EduHome.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
@@ -17,14 +19,17 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles ="Admin,Moderator")]
     public class CourseController : Controller
     {
         private readonly AppDbContext _context;
         private readonly IWebHostEnvironment _env;
-        public CourseController(AppDbContext context, IWebHostEnvironment env)
+        private readonly SignInManager<AppUser> _signInManager;
+        public CourseController(AppDbContext context, IWebHostEnvironment env, SignInManager<AppUser> signInManager)
         {
             _context = context;
             _env = env;
+            _signInManager = signInManager;
         }
 
         #region Index
@@ -254,6 +259,14 @@ namespace EduHome.Areas.AdminArea.Controllers
         private async Task<Course> GetCourseById(int Id)
         {
             return await _context.Courses.Where(m => m.Id == Id).Include(m => m.CourseFuture).FirstOrDefaultAsync();
+        }
+        #endregion
+
+        #region Logout
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(Logout), "Course");
         }
         #endregion
 

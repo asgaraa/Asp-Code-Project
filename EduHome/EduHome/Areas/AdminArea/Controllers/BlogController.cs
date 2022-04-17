@@ -3,6 +3,7 @@ using EduHome.Models;
 using EduHome.Utilities.File;
 using EduHome.Utilities.Helpers;
 using EduHome.ViewModels.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ using System.Threading.Tasks;
 namespace EduHome.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
     public class BlogController : Controller
     {
 

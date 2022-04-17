@@ -88,7 +88,7 @@ namespace EduHome.Controllers
                 emailbody = streamReader.ReadToEnd();
             }
 
-            await _userManager.AddToRoleAsync(newUser, UserRoles.Moderator.ToString());
+            await _userManager.AddToRoleAsync(newUser, UserRoles.User.ToString());
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
             var url = Url.Action(nameof(VerifyEmail), "Accaunt", new { userId = newUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
